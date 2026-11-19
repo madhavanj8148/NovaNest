@@ -9,7 +9,7 @@
 [![Prometheus](https://img.shields.io/badge/Prometheus-v2.52-E6522C.svg)](https://prometheus.io/)
 [![Grafana](https://img.shields.io/badge/Grafana-v11.0-F46800.svg)](https://grafana.com/)
 [![Tests](https://img.shields.io/badge/Tests-264%2F264%20Passing-brightgreen.svg)](tests/)
-[![Security](https://img.shields.io/badge/Security-OWASP%20Hardened-success.svg)](SECURITY_DOCUMENTATION.md)
+[![Security](https://img.shields.io/badge/Security-OWASP%20Hardened-success.svg)](REPORTS/Technical_Reports/SECURITY_DOCUMENTATION.md)
 
 NovaNest is an enterprise-grade, full-stack business intelligence and prescriptive decision-support platform designed for high-velocity quick commerce and food delivery operations. Built across 12 rigorous engineering phases, NovaNest bridges the critical gap between predictive analytics and actionable business decisions through a normalized **MySQL 8.0** core database, an in-process **Hub-and-Spoke Multi-Agent AI System**, explainable machine learning models (TreeSHAP), a **prescriptive recommendation engine** governed by mandatory human approval, and an autonomic **Site Reliability Engineering (SRE)** stack.
 
@@ -120,7 +120,7 @@ To stop all development engines cleanly:
 .\stop_novanest.bat
 ```
 
-For full port details and troubleshooting, see **[LOCALHOST_SERVICES_GUIDE.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/LOCALHOST_SERVICES_GUIDE.md)** ([DOCX](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/LOCALHOST_SERVICES_GUIDE.docx) | [PDF](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/LOCALHOST_SERVICES_GUIDE.pdf)).
+For full port details and troubleshooting, see **[LOCALHOST_SERVICES_GUIDE.md](REPORTS/Technical_Reports/LOCALHOST_SERVICES_GUIDE.md)** ([DOCX](REPORTS/Technical_Reports/LOCALHOST_SERVICES_GUIDE.docx) | [PDF](REPORTS/Technical_Reports/LOCALHOST_SERVICES_GUIDE.pdf)).
 
 ---
 
@@ -179,22 +179,22 @@ npm run dev
 
 | Document | Purpose & Description |
 | :--- | :--- |
-| **[NovaNest_Capstone_Project_Report_Simple_English.docx](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/NovaNest_Capstone_Project_Report_Simple_English.docx)** | Complete 75-page B.Tech Capstone Project Report written in human-authored, clear English matching VIT-AP University SCOPE guidelines. |
-| **[NovaNest_Capstone_Project_Report_Simple_English.pdf](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/NovaNest_Capstone_Project_Report_Simple_English.pdf)** | High-quality PDF with verified two-pass synchronized page numbering, 22 tables, and 21 figures. |
-| **[NovaNest_Capstone_Project_Report.docx](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/NovaNest_Capstone_Project_Report.docx)** | Formal academic thesis edition (73 pages, IEEE/VIT-AP academic style). |
-| **[NovaNest_Capstone_Project_Report.pdf](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/NovaNest_Capstone_Project_Report.pdf)** | Formal academic thesis PDF edition with embedded diagrams and screenshots. |
-| **[NovaNest_Report_Validation.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/NovaNest_Report_Validation.md)** | 10-point academic validation register and provenance audit certifying zero contamination and database integrity. |
-| **[LOCALHOST_SERVICES_GUIDE.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/LOCALHOST_SERVICES_GUIDE.md)** | Master operational guide for all localhost ports, microservices, engines, and one-click startup scripts ([DOCX](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/LOCALHOST_SERVICES_GUIDE.docx) \| [PDF](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/LOCALHOST_SERVICES_GUIDE.pdf)). |
-| **[PROJECT_REPORT.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/PROJECT_REPORT.md)** | Technical report detailing project background, methodology, implementation, and conclusions. |
-| **[SYSTEM_ARCHITECTURE.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/SYSTEM_ARCHITECTURE.md)** | End-to-end architectural blueprint covering multi-tier designs, component interactions, and Mermaid diagrams. |
-| **[DATABASE_DOCUMENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DATABASE_DOCUMENTATION.md)** | Complete database specification: ER diagram, 10 table catalogs, 11 foreign keys, CSV mappings, and SQL KPI formulas. |
-| **[AI_ML_DOCUMENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/AI_ML_DOCUMENTATION.md)** | Multi-agent Hub-and-Spoke architecture, 5 domain agents, Model Registry, TreeSHAP explainability, and confidence tiers. |
-| **[API_DOCUMENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/API_DOCUMENTATION.md)** | Full REST API specification covering 48 endpoints, token RBAC, request/response contracts, and error schemas. |
-| **[SECURITY_DOCUMENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/SECURITY_DOCUMENTATION.md)** | Threat model and defense-in-depth security: OWASP headers, prompt injection defense, SQL AST sandbox, Encrypt-then-MAC. |
-| **[DEPLOYMENT_GUIDE.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DEPLOYMENT_GUIDE.md)** | Deployment runbooks, multi-environment setups, Docker configurations, secret rotation, and disaster recovery drills. |
-| **[KNOWN_LIMITATIONS.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/KNOWN_LIMITATIONS.md)** | Transparent disclosure of system boundaries, synthetic data constraints (`LOW_EMPIRICAL`), sensor absences, and future work. |
-| **[DEMO_SCRIPT.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DEMO_SCRIPT.md)** | Rehearsed live demonstration script with click-by-click instructions, talking points, and recovery notes. |
-| **[PRESENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/PRESENTATION.md)** | 20-slide university evaluation presentation deck with slide layouts, diagrams, and speaker notes. |
+| **[NovaNest_Capstone_Project_Report_Simple_English.docx](REPORTS/Academic_Reports/NovaNest_Capstone_Project_Report_Simple_English.docx)** | Complete 75-page B.Tech Capstone Project Report written in human-authored, clear English matching VIT-AP University SCOPE guidelines. |
+| **[NovaNest_Capstone_Project_Report_Simple_English.pdf](REPORTS/Academic_Reports/NovaNest_Capstone_Project_Report_Simple_English.pdf)** | High-quality PDF with verified two-pass synchronized page numbering, 22 tables, and 21 figures. |
+| **[NovaNest_Capstone_Project_Report.docx](REPORTS/Academic_Reports/NovaNest_Capstone_Project_Report.docx)** | Formal academic thesis edition (73 pages, IEEE/VIT-AP academic style). |
+| **[NovaNest_Capstone_Project_Report.pdf](REPORTS/Academic_Reports/NovaNest_Capstone_Project_Report.pdf)** | Formal academic thesis PDF edition with embedded diagrams and screenshots. |
+| **[NovaNest_Report_Validation.md](REPORTS/Academic_Reports/NovaNest_Report_Validation.md)** | 10-point academic validation register and provenance audit certifying zero contamination and database integrity. |
+| **[LOCALHOST_SERVICES_GUIDE.md](REPORTS/Technical_Reports/LOCALHOST_SERVICES_GUIDE.md)** | Master operational guide for all localhost ports, microservices, engines, and one-click startup scripts ([DOCX](REPORTS/Technical_Reports/LOCALHOST_SERVICES_GUIDE.docx) \| [PDF](REPORTS/Technical_Reports/LOCALHOST_SERVICES_GUIDE.pdf)). |
+| **[PROJECT_REPORT.md](REPORTS/Project_Documentation/PROJECT_REPORT.md)** | Technical report detailing project background, methodology, implementation, and conclusions. |
+| **[SYSTEM_ARCHITECTURE.md](REPORTS/Technical_Reports/SYSTEM_ARCHITECTURE.md)** | End-to-end architectural blueprint covering multi-tier designs, component interactions, and Mermaid diagrams. |
+| **[DATABASE_DOCUMENTATION.md](REPORTS/Technical_Reports/DATABASE_DOCUMENTATION.md)** | Complete database specification: ER diagram, 10 table catalogs, 11 foreign keys, CSV mappings, and SQL KPI formulas. |
+| **[AI_ML_DOCUMENTATION.md](REPORTS/Technical_Reports/AI_ML_DOCUMENTATION.md)** | Multi-agent Hub-and-Spoke architecture, 5 domain agents, Model Registry, TreeSHAP explainability, and confidence tiers. |
+| **[API_DOCUMENTATION.md](REPORTS/Technical_Reports/API_DOCUMENTATION.md)** | Full REST API specification covering 48 endpoints, token RBAC, request/response contracts, and error schemas. |
+| **[SECURITY_DOCUMENTATION.md](REPORTS/Technical_Reports/SECURITY_DOCUMENTATION.md)** | Threat model and defense-in-depth security: OWASP headers, prompt injection defense, SQL AST sandbox, Encrypt-then-MAC. |
+| **[DEPLOYMENT_GUIDE.md](REPORTS/Technical_Reports/DEPLOYMENT_GUIDE.md)** | Deployment runbooks, multi-environment setups, Docker configurations, secret rotation, and disaster recovery drills. |
+| **[KNOWN_LIMITATIONS.md](REPORTS/Technical_Reports/KNOWN_LIMITATIONS.md)** | Transparent disclosure of system boundaries, synthetic data constraints (`LOW_EMPIRICAL`), sensor absences, and future work. |
+| **[DEMO_SCRIPT.md](REPORTS/Project_Documentation/DEMO_SCRIPT.md)** | Rehearsed live demonstration script with click-by-click instructions, talking points, and recovery notes. |
+| **[PRESENTATION.md](REPORTS/Project_Documentation/PRESENTATION.md)** | 20-slide university evaluation presentation deck with slide layouts, diagrams, and speaker notes. |
 
 ---
 
@@ -226,10 +226,10 @@ NovaNest has undergone automated multi-phase regression and cross-platform consi
 ## 🎓 Academic Examination & Evaluation Guide
 
 For evaluators reviewing this project for academic capstone, thesis, or technical evaluation:
-1. **Begin with the Presentation Deck**: Review **[PRESENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/PRESENTATION.md)** for a 20-slide structured summary of problem, methodology, architecture, and results.
-2. **Execute the Rehearsed Live Demo**: Follow **[DEMO_SCRIPT.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DEMO_SCRIPT.md)** for an 18-minute click-by-click demonstration of the live system.
-3. **Verify Data & Scientific Honesty**: Inspect **[KNOWN_LIMITATIONS.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/KNOWN_LIMITATIONS.md)** and **[AI_ML_DOCUMENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/AI_ML_DOCUMENTATION.md)** to observe how synthetic data boundaries were addressed with commercial guardrails rather than lookahead data leakage.
-4. **Audit Architecture & Code**: Inspect **[SYSTEM_ARCHITECTURE.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/SYSTEM_ARCHITECTURE.md)**, **[DATABASE_DOCUMENTATION.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DATABASE_DOCUMENTATION.md)**, and **[PROJECT_REPORT.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/PROJECT_REPORT.md)**.
+1. **Begin with the Presentation Deck**: Review **[PRESENTATION.md](REPORTS/Project_Documentation/PRESENTATION.md)** for a 20-slide structured summary of problem, methodology, architecture, and results.
+2. **Execute the Rehearsed Live Demo**: Follow **[DEMO_SCRIPT.md](REPORTS/Project_Documentation/DEMO_SCRIPT.md)** for an 18-minute click-by-click demonstration of the live system.
+3. **Verify Data & Scientific Honesty**: Inspect **[KNOWN_LIMITATIONS.md](REPORTS/Technical_Reports/KNOWN_LIMITATIONS.md)** and **[AI_ML_DOCUMENTATION.md](REPORTS/Technical_Reports/AI_ML_DOCUMENTATION.md)** to observe how synthetic data boundaries were addressed with commercial guardrails rather than lookahead data leakage.
+4. **Audit Architecture & Code**: Inspect **[SYSTEM_ARCHITECTURE.md](REPORTS/Technical_Reports/SYSTEM_ARCHITECTURE.md)**, **[DATABASE_DOCUMENTATION.md](REPORTS/Technical_Reports/DATABASE_DOCUMENTATION.md)**, and **[PROJECT_REPORT.md](REPORTS/Project_Documentation/PROJECT_REPORT.md)**.
 5. **Run the Full Test Suite**:
    ```bash
    python -m unittest discover -s tests -p "test_phase*.py"

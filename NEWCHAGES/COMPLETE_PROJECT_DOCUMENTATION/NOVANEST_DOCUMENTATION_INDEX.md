@@ -68,7 +68,7 @@ All documents within this suite adhere to publication-grade standards, empirical
 
 - [NEWCHAGES/CHANGELOG.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/CHANGELOG.md): Complete chronological version history from v0.1.0 to v2.6.0 following Keep a Changelog standards.
 - [NEWCHAGES/NEW_FILES_REGISTER.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/NEW_FILES_REGISTER.md): Exhaustive inventory of every file created throughout all development phases.
-- [LICENSES.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/LICENSES.md): Formal open-source attribution for all third-party libraries and frameworks.
+- [LICENSES.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Project_Documentation/LICENSES.md): Formal open-source attribution for all third-party libraries and frameworks.
 - [README.md](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/README.md): Repository quick-start guide, Docker commands, and platform architecture overview.
 
 ---

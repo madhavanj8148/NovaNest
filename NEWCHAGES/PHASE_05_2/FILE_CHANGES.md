@@ -17,8 +17,8 @@ Phase 05.2 was conducted as a non-destructive independent integration verificati
 | :--- | :--- | :--- |
 | [`NEWCHAGES/ROADMAP_STATUS.md`](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/ROADMAP_STATUS.md) | Added `Phase 05.2` row with `PARTIALLY_VERIFIED` status | All Phase 01–05.1 & 06–10 rows preserved |
 | [`NEWCHAGES/NEWCHAGES_MASTER.md`](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/NEWCHAGES_MASTER.md) | Recorded Phase 05.2 integration audit milestone & MySQL/runtime findings | All historical records preserved |
-| [`NEWCHAGES/NEWCHAGESTOTALREPORT.md`](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/NEWCHAGESTOTALREPORT.md) | Added `Phase 05.2` status entry & summary note | All historical records preserved |
-| [`NEWCHAGESTOTALREPORT.md`](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGESTOTALREPORT.md) | Synced top-level consolidation tracker with `Phase 05.2` status | All historical records preserved |
+| [`NEWCHAGES/NEWCHAGESTOTALREPORT.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Project_Documentation/NEWCHAGESTOTALREPORT.md) | Added `Phase 05.2` status entry & summary note | All historical records preserved |
+| [`NEWCHAGESTOTALREPORT.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Project_Documentation/NEWCHAGESTOTALREPORT.md) | Synced top-level consolidation tracker with `Phase 05.2` status | All historical records preserved |
 | [`NEWCHAGES/CHANGELOG.md`](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/CHANGELOG.md) | Added `[0.5.2]` integration verification audit changelog entry | Historical `[0.1.0]`–`[0.5.1]` preserved |
 | [`NEWCHAGES/IMPLEMENTATION_HISTORY.md`](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/IMPLEMENTATION_HISTORY.md) | Appended `Task 16: Phase 05.2` verification record | Tasks 01–15 preserved |
 | [`NEWCHAGES/NEW_FILES_REGISTER.md`](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/NEWCHAGES/NEW_FILES_REGISTER.md) | Appended Phase 05.2 created report/governance files | Prior entries preserved |

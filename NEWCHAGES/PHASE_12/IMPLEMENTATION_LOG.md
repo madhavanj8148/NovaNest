@@ -97,13 +97,13 @@
 ### 6. Milestone 6: Core Deliverables & University Presentation
 - Produced the complete set of required final deliverables:
   - [`README.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/README.md): Master executive README with badges, architecture overview, tech stack, quick start, documentation index, test results, and academic evaluation guide.
-  - [`PROJECT_REPORT.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/PROJECT_REPORT.md): Comprehensive 12-page academic thesis and technical report detailing project background, methodology, implementation, and conclusions.
-  - [`SYSTEM_ARCHITECTURE.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/SYSTEM_ARCHITECTURE.md): Full architectural blueprint with Mermaid diagrams.
-  - [`DATABASE_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DATABASE_DOCUMENTATION.md): Canonical schema, ER diagram, 11 foreign keys, CSV mappings, and SQL KPI formulas.
-  - [`AI_ML_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/AI_ML_DOCUMENTATION.md): 5 domain agents, Master Orchestrator, 5 ML models, confidence tiers, and TreeSHAP.
-  - [`API_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/API_DOCUMENTATION.md): OpenAPI REST specification covering all 35+ endpoints, token RBAC, and error contracts.
-  - [`DEPLOYMENT_GUIDE.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DEPLOYMENT_GUIDE.md): Multi-environment configs, Docker Compose, bare-metal runtimes, and SRE runbooks.
-  - [`SECURITY_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/SECURITY_DOCUMENTATION.md): Threat model, OWASP defensive controls, SQL AST sandboxing, Encrypt-then-MAC.
-  - [`DEMO_SCRIPT.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/DEMO_SCRIPT.md): Rehearsed 18-minute live demonstration script.
-  - [`KNOWN_LIMITATIONS.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/KNOWN_LIMITATIONS.md): Transparent disclosure of system boundaries, synthetic data constraints, and sensor absences.
-  - [`PRESENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/PRESENTATION.md): 20-slide university evaluation presentation deck with slide layouts, diagrams, and speaker notes.
+  - [`PROJECT_REPORT.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Project_Documentation/PROJECT_REPORT.md): Comprehensive 12-page academic thesis and technical report detailing project background, methodology, implementation, and conclusions.
+  - [`SYSTEM_ARCHITECTURE.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Technical_Reports/SYSTEM_ARCHITECTURE.md): Full architectural blueprint with Mermaid diagrams.
+  - [`DATABASE_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Technical_Reports/DATABASE_DOCUMENTATION.md): Canonical schema, ER diagram, 11 foreign keys, CSV mappings, and SQL KPI formulas.
+  - [`AI_ML_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Technical_Reports/AI_ML_DOCUMENTATION.md): 5 domain agents, Master Orchestrator, 5 ML models, confidence tiers, and TreeSHAP.
+  - [`API_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Technical_Reports/API_DOCUMENTATION.md): OpenAPI REST specification covering all 35+ endpoints, token RBAC, and error contracts.
+  - [`DEPLOYMENT_GUIDE.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Technical_Reports/DEPLOYMENT_GUIDE.md): Multi-environment configs, Docker Compose, bare-metal runtimes, and SRE runbooks.
+  - [`SECURITY_DOCUMENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Technical_Reports/SECURITY_DOCUMENTATION.md): Threat model, OWASP defensive controls, SQL AST sandboxing, Encrypt-then-MAC.
+  - [`DEMO_SCRIPT.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Project_Documentation/DEMO_SCRIPT.md): Rehearsed 18-minute live demonstration script.
+  - [`KNOWN_LIMITATIONS.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Technical_Reports/KNOWN_LIMITATIONS.md): Transparent disclosure of system boundaries, synthetic data constraints, and sensor absences.
+  - [`PRESENTATION.md`](file:///c:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Project_Documentation/PRESENTATION.md): 20-slide university evaluation presentation deck with slide layouts, diagrams, and speaker notes.

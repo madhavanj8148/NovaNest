@@ -1,7 +1,7 @@
 # NovaNest — Master Reports & Documentation Index
 
 **Generated:** 2026-11-19 12:34:32  
-**Total Documents Cataloged:** 74  
+**Total Documents Cataloged:** 78  
 
 This index provides a complete, organized inventory of all academic reports, technical specifications, testing quality audits, and foundational project documentation for the **NovaNest: AI-Powered Food Delivery Analytics & Decision Intelligence Platform**.
 
@@ -32,6 +32,10 @@ Capstone project thesis reports, research papers, novelty assessments, and acade
 | **[NOVANEST_RESEARCH_PAPER.docx](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Academic_Reports/NOVANEST_RESEARCH_PAPER.docx)** | `DOCX` | Full NovaNest Academic Research Paper (Word format) | `REPORTS/Academic_Reports/` | `NEWCHAGES/RESEARCH_PAPER/NOVANEST_RESEARCH_PAPER.docx` |
 | **[NOVANEST_RESEARCH_PAPER.md](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Academic_Reports/NOVANEST_RESEARCH_PAPER.md)** | `MD` | NovaNest Academic Research Paper (Markdown source) | `REPORTS/Academic_Reports/` | `NEWCHAGES/RESEARCH_PAPER/NOVANEST_RESEARCH_PAPER.md` |
 | **[NOVANEST_RESEARCH_PAPER.pdf](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Academic_Reports/NOVANEST_RESEARCH_PAPER.pdf)** | `PDF` | Full NovaNest Academic Research Paper (Publication PDF) | `REPORTS/Academic_Reports/` | `NEWCHAGES/RESEARCH_PAPER/NOVANEST_RESEARCH_PAPER.pdf` |
+| **[NovaNest_Capstone_Final_Review.pptx](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Academic_Reports/NovaNest_Capstone_Final_Review.pptx)** | `PPTX` | NovaNest Capstone Final Review Presentation Slides (14.7 MB) | `REPORTS/Academic_Reports/` | `01. file/NovaNest_Capstone_Final_Review.pptx` |
+| **[NovaNest_Capstone_Final_Review__PPT.pdf](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Academic_Reports/NovaNest_Capstone_Final_Review__PPT.pdf)** | `PDF` | NovaNest Capstone Final Review Presentation PDF | `REPORTS/Academic_Reports/` | `01. file/NovaNest_Capstone_Final_Review__PPT.pdf` |
+| **[NovaNest_Report.docx](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Academic_Reports/NovaNest_Report.docx)** | `DOCX` | Comprehensive NovaNest Capstone Project Report (9.9 MB Word Document) | `REPORTS/Academic_Reports/` | `01. file/NovaNest_Report.docx` |
+| **[NovaNest_Report.pdf](file:///C:/Users/madha/OneDrive/Documents/NovaNest-main/REPORTS/Academic_Reports/NovaNest_Report.pdf)** | `PDF` | Comprehensive NovaNest Capstone Project Report (Publication PDF) | `REPORTS/Academic_Reports/` | `01. file/NovaNest_Report.pdf` |
 
 ---
 

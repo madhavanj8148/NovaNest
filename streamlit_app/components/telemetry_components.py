@@ -64,10 +64,26 @@ def render_agent_telemetry_card(
     Accepts completed execution metadata or real-time event logs.
     """
     # Parse agent statuses from telemetry or event history
+    invoked_ids: set[str] = set()
+    if telemetry and isinstance(telemetry, dict):
+        exec_times = telemetry.get("agent_execution_times") or telemetry.get("execution_times") or {}
+        invoked_ids.update(exec_times.keys())
+        for ag in telemetry.get("agents_invoked") or []:
+            if isinstance(ag, dict) and ag.get("agent_id"):
+                invoked_ids.add(ag["agent_id"])
+            elif isinstance(ag, str):
+                invoked_ids.add(ag)
+
     agent_states: Dict[str, Dict[str, Any]] = {}
     for agent in DOMAIN_AGENTS:
+        if is_live:
+            init_status = "pending"
+        elif invoked_ids:
+            init_status = "completed" if agent["id"] in invoked_ids else "skipped"
+        else:
+            init_status = "completed"
         agent_states[agent["id"]] = {
-            "status": "pending" if is_live else "completed",
+            "status": init_status,
             "duration_ms": None,
             "error": None,
         }
@@ -147,39 +163,35 @@ def render_agent_telemetry_card(
             else '<span style="font-size: 0.65rem; color: #A78BFA; font-weight: 700; background: rgba(167, 139, 250, 0.1); padding: 1px 5px; border-radius: 4px;">S2 SYNTHESIS</span>'
         )
 
-        rows_html.append(
-            f"""
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; margin-bottom: 4px; background: rgba(255, 255, 255, 0.02); border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.04);">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 1rem;">{ag['icon']}</span>
-                    <div>
-                        <div style="font-size: 0.78rem; font-weight: 600; color: #F1F5F9;">{ag['name']} &nbsp;{stage_tag}</div>
-                        <div style="font-size: 0.68rem; color: #94A3B8;">{ag['role']}</div>
-                    </div>
-                </div>
-                <div>{badge_html}</div>
-            </div>
-            """
+        row = (
+            f'<div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; margin-bottom: 4px; background: rgba(255, 255, 255, 0.02); border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.04);">'
+            f'<div style="display: flex; align-items: center; gap: 8px;">'
+            f'<span style="font-size: 1rem;">{ag["icon"]}</span>'
+            f'<div>'
+            f'<div style="font-size: 0.78rem; font-weight: 600; color: #F1F5F9;">{ag["name"]} &nbsp;{stage_tag}</div>'
+            f'<div style="font-size: 0.68rem; color: #94A3B8;">{ag["role"]}</div>'
+            f'</div></div>'
+            f'<div>{badge_html}</div>'
+            f'</div>'
         )
+        rows_html.append(row)
 
-    all_rows = "\n".join(rows_html)
+    all_rows = "".join(rows_html)
 
-    card_container = f"""
-    <div style="background: #0B0F17; border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 10px; padding: 12px 16px; margin: 12px 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 1.1rem; color: #60A5FA;">⚡</span>
-                <span style="font-size: 0.82rem; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.05em;">MasterOrchestrator Multi-Agent Execution</span>
-            </div>
-            <div>{v_badge}</div>
-        </div>
-        <div style="margin-bottom: 8px;">
-            {all_rows}
-        </div>
-        <div style="display: flex; justify-content: space-between; font-size: 0.68rem; color: #64748B; margin-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.04); padding-top: 6px;">
-            <span>Architecture: Zero-Copy CoW Engine • AST Grounding</span>
-            <span>{footer_meta}</span>
-        </div>
-    </div>
-    """
+    card_container = (
+        f'<div style="background: #0B0F17; border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 10px; padding: 12px 16px; margin: 12px 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">'
+        f'<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px;">'
+        f'<div style="display: flex; align-items: center; gap: 8px;">'
+        f'<span style="font-size: 1.1rem; color: #60A5FA;">⚡</span>'
+        f'<span style="font-size: 0.82rem; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.05em;">MasterOrchestrator Multi-Agent Execution</span>'
+        f'</div>'
+        f'<div>{v_badge}</div>'
+        f'</div>'
+        f'<div style="margin-bottom: 8px;">{all_rows}</div>'
+        f'<div style="display: flex; justify-content: space-between; font-size: 0.68rem; color: #64748B; margin-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.04); padding-top: 6px;">'
+        f'<span>Architecture: Zero-Copy CoW Engine • AST Grounding</span>'
+        f'<span>{footer_meta}</span>'
+        f'</div>'
+        f'</div>'
+    )
     st.markdown(card_container, unsafe_allow_html=True)

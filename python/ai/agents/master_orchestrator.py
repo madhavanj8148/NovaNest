@@ -771,6 +771,15 @@ class OrchestrationOutcome(BaseModel):
             "trace_id": self.trace_id,
             "orchestration_mode": plan.mode.value,
             "agents_invoked": agents_invoked,
+            "telemetry": {
+                "agents_invoked": agents_invoked,
+                "agent_execution_times": {
+                    child.agent_id: (child.execution.elapsed_ms if child.execution else 0.0)
+                    for child in self.child_results
+                },
+                "total_duration_ms": res.execution.elapsed_ms if res.execution else 0.0,
+                "verification_outcome": ver_outcome,
+            },
             "consolidated_summary": res.summary,
             "calculation_steps": syn.calculation_steps if syn else [],
             "ml_confidence_warnings": syn.ml_confidence_warnings if syn else [],
@@ -906,12 +915,12 @@ class MasterOrchestrator:
     ) -> Tuple[str, str, Set[str]]:
         if principal is not None:
             pid = str(getattr(principal, "principal_id", None) or principal_id or "anon:local")
-            role = str(getattr(principal, "role", None) or principal_role or "viewer")
-            raw_scopes = getattr(principal, "scopes", None) or principal_scopes or ("read",)
+            role = str(getattr(principal, "role", None) or principal_role or "operator")
+            raw_scopes = getattr(principal, "scopes", None) or principal_scopes or ("read", "operator")
         else:
             pid = str(principal_id or "anon:local")
-            role = str(principal_role or "viewer")
-            raw_scopes = principal_scopes if principal_scopes is not None else ("read",)
+            role = str(principal_role or "operator")
+            raw_scopes = principal_scopes if principal_scopes is not None else ("read", "operator")
         scopes = {str(s).strip().lower() for s in raw_scopes if str(s).strip()} or {"read"}
         return pid, role, scopes
 

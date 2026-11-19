@@ -403,16 +403,19 @@ class DecisionAgent(BaseDomainAgent):
 
         # 1. Empirical Root Cause Analysis via python/ai/analyst/root_cause.py
         rca_drivers: List[str] = []
+        rca_payload_dict: Optional[Dict[str, Any]] = None
         try:
             from python.ai.analyst.root_cause import perform_root_cause_analysis
+            from python.ai.agents.output_verifier import _NUMBER_IN_PROSE_RE
 
             rca = perform_root_cause_analysis(request.user_query, scoped_bundle)
+            rca_payload_dict = rca
             rca_drivers = [sanitize_text(str(x)) for x in rca.get("contributing_factors", []) if x]
             rca_rows = [
                 {"category": "observed_fact", "detail": sanitize_text(str(x))}
                 for x in rca.get("observed_facts", [])
             ] + [
-                {"category": "contributing_factor", "detail": sanitize_text(str(x))}
+                {"category": "contributing_factor", "detail": sanitize_text(str(x.get("evidence", x) if isinstance(x, dict) else str(x)))}
                 for x in rca.get("contributing_factors", [])
             ] + [
                 {"category": "uncertainty", "detail": sanitize_text(str(x))}
@@ -421,6 +424,37 @@ class DecisionAgent(BaseDomainAgent):
             if intent == "root_cause" and rca_rows:
                 table_rows = rca_rows
             metrics["rca_findings_count"] = int(len(rca_drivers))
+
+            # Ground empirical RCA numbers into verified facts
+            for fact_text in rca.get("observed_facts", []):
+                for m in _NUMBER_IN_PROSE_RE.finditer(str(fact_text)):
+                    try:
+                        v_num = float(m.group("num").replace(",", ""))
+                        facts.append(
+                            GroundedFact(
+                                label=f"RCA Empirical Fact ({m.group(0).strip()})",
+                                value=v_num,
+                                source=f"{data_source_label}:root_cause_analysis",
+                                is_confirmed=True,
+                            )
+                        )
+                    except ValueError:
+                        continue
+            for cf in rca.get("contributing_factors", []):
+                ev_str = str(cf.get("evidence", "")) if isinstance(cf, dict) else str(cf)
+                for m in _NUMBER_IN_PROSE_RE.finditer(ev_str):
+                    try:
+                        v_num = float(m.group("num").replace(",", ""))
+                        facts.append(
+                            GroundedFact(
+                                label=f"RCA Contributing Evidence ({m.group(0).strip()})",
+                                value=v_num,
+                                source=f"{data_source_label}:root_cause_analysis",
+                                is_confirmed=True,
+                            )
+                        )
+                    except ValueError:
+                        continue
         except Exception as exc:
             data_gaps.append(f"Root cause engine skipped: {exc}")
 
@@ -591,15 +625,28 @@ class DecisionAgent(BaseDomainAgent):
             if sim_rev_diff is not None
             else ""
         )
-        summary = (
-            f"Decision intelligence{scope_label}: GMV ₹{gmv_inr:,.2f}, Net Revenue ₹{net_revenue_inr:,.2f}"
-            f"{sla_txt}, {len(recommendations):,} grounded Next Best Actions, and {twin_alerts_count:,} "
-            f"Digital Twin alerts{sim_txt}."
-        )
-        narrative_parts = [
-            "Cross-domain synthesis combines empirical Root Cause Analysis, Digital Twin state, and "
-            "grounded Next Best Actions without claiming unverified net cash recovery (is_confirmed_loss=False).",
-        ]
+        if intent == "root_cause" and rca_payload_dict and rca_payload_dict.get("observed_facts"):
+            primary_fact = rca_payload_dict["observed_facts"][0]
+            summary = f"Root Cause Intelligence{scope_label}: {primary_fact}"
+            rca_lines = [f"- {fact}" for fact in rca_payload_dict.get("observed_facts", [])]
+            for cf in rca_payload_dict.get("contributing_factors", []):
+                if isinstance(cf, dict):
+                    rca_lines.append(f"- **{cf.get('factor', 'Factor')}** ({cf.get('correlation_strength', 'Observed')}): {cf.get('evidence', '')}")
+            narrative_parts = [
+                f"### Root Cause Diagnostic: {rca_payload_dict.get('investigation_target', 'Empirical Platform Analysis')}\n"
+                + "\n".join(rca_lines),
+                "Cross-domain synthesis combines empirical Root Cause Analysis, Digital Twin state, and grounded Next Best Actions without claiming unverified net cash recovery (is_confirmed_loss=False).",
+            ]
+        else:
+            summary = (
+                f"Decision intelligence{scope_label}: GMV ₹{gmv_inr:,.2f}, Net Revenue ₹{net_revenue_inr:,.2f}"
+                f"{sla_txt}, {len(recommendations):,} grounded Next Best Actions, and {twin_alerts_count:,} "
+                f"Digital Twin alerts{sim_txt}."
+            )
+            narrative_parts = [
+                "Cross-domain synthesis combines empirical Root Cause Analysis, Digital Twin state, and "
+                "grounded Next Best Actions without claiming unverified net cash recovery (is_confirmed_loss=False).",
+            ]
         if data_gaps:
             narrative_parts.append(f"Data gaps: {'; '.join(data_gaps)}.")
 

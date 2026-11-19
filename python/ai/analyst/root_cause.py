@@ -559,16 +559,23 @@ def perform_root_cause_analysis(query: str, data: Dict[str, pd.DataFrame]) -> Di
     anomalies_df = data.get("operational_anomalies", pd.DataFrame())
 
     # Route cleanly to empirical diagnostic domain
-    if any(k in q for k in ["delay", "eta", "delivery time", "slow", "delivery duration", "delivery performance", "sla", "logistics"]):
-        return _rca_delivery_delays(orders, deliveries, restaurants, orders_eng, alloc_df, anomalies_df)
+    res: Dict[str, Any]
+    if any(k in q for k in ["delivery", "deliveries", "delay", "eta", "delivery time", "slow", "delivery duration", "delivery performance", "sla", "logistics", "fulfillment"]):
+        res = _rca_delivery_delays(orders, deliveries, restaurants, orders_eng, alloc_df, anomalies_df)
+    elif any(k in q for k in ["cancel", "cancellation", "order drop"]):
+        res = _rca_cancellations(orders, deliveries, restaurants, anomalies_df)
+    elif any(k in q for k in ["leakage", "margin", "profit", "burn", "discount", "subsidy"]):
+        res = _rca_leakage(orders, orders_eng, leakage_df, anomalies_df)
+    elif any(k in q for k in ["restaurant", "partner", "merchant", "kitchen", "rating"]):
+        res = _rca_restaurants(orders, restaurants, anomalies_df)
+    else:
+        res = _rca_customer_churn(orders, deliveries, ratings_df, churn_df)
 
-    if any(k in q for k in ["cancel", "cancellation", "order drop"]):
-        return _rca_cancellations(orders, deliveries, restaurants, anomalies_df)
+    # Normalize contributing factors to provide both 'correlation' and 'correlation_strength'
+    for cf in res.get("contributing_factors", []):
+        if isinstance(cf, dict):
+            strength = cf.get("correlation_strength") or cf.get("correlation") or "Observed"
+            cf["correlation_strength"] = strength
+            cf["correlation"] = strength
 
-    if any(k in q for k in ["leakage", "margin", "profit", "burn", "discount", "subsidy"]):
-        return _rca_leakage(orders, orders_eng, leakage_df, anomalies_df)
-
-    if any(k in q for k in ["restaurant", "partner", "merchant", "kitchen", "rating"]):
-        return _rca_restaurants(orders, restaurants, anomalies_df)
-
-    return _rca_customer_churn(orders, deliveries, ratings_df, churn_df)
+    return res

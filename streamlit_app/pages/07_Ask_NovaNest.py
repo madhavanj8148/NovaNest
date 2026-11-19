@@ -244,25 +244,25 @@ if active_response:
         entity_str = " &nbsp;|&nbsp; " + " • ".join(entity_badges) if entity_badges else ""
 
         st.markdown(
-            f"""
-            <div style="background: var(--nn-bg-card-elevated, #111827); border: 1px solid var(--nn-border, #1F2937); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1rem; margin-bottom: 1rem;">
-                <div style="font-size: 0.72rem; font-weight: 700; color: #60A5FA; text-transform: uppercase;">Inquiry & Multi-Agent Route</div>
-                <div style="font-size: 1.05rem; font-weight: 600; color: #FFFFFF; margin-top: 0.2rem;">"{prompt_display}"</div>
-                <div style="font-size: 0.78rem; color: #94A3B8; margin-top: 0.4rem;">
-                    <strong>Intent:</strong> <span style="color: #38BDF8;">{intent}</span>
-                    &nbsp;|&nbsp;
-                    <strong>Engine:</strong> <span style="color: #34D399;">MasterOrchestrator v2</span>
-                    {f'&nbsp;|&nbsp;<strong>Resolved Context:</strong> {resolved_q}' if resolved_q else ''}
-                    {entity_str}
-                </div>
-            </div>
-            """,
+            (
+                f'<div style="background: var(--nn-bg-card-elevated, #111827); border: 1px solid var(--nn-border, #1F2937); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1rem; margin-bottom: 1rem;">'
+                f'<div style="font-size: 0.72rem; font-weight: 700; color: #60A5FA; text-transform: uppercase;">Inquiry & Multi-Agent Route</div>'
+                f'<div style="font-size: 1.05rem; font-weight: 600; color: #FFFFFF; margin-top: 0.2rem;">"{prompt_display}"</div>'
+                f'<div style="font-size: 0.78rem; color: #94A3B8; margin-top: 0.4rem;">'
+                f'<strong>Intent:</strong> <span style="color: #38BDF8;">{intent}</span>'
+                f'&nbsp;|&nbsp;'
+                f'<strong>Engine:</strong> <span style="color: #34D399;">MasterOrchestrator v2</span>'
+                f"{f'&nbsp;|&nbsp;<strong>Resolved Context:</strong> {resolved_q}' if resolved_q else ''}"
+                f'{entity_str}'
+                f'</div>'
+                f'</div>'
+            ),
             unsafe_allow_html=True,
         )
 
         # 5-Domain Agent Telemetry Card
         render_agent_telemetry_card(
-            telemetry=active_response.get("telemetry"),
+            telemetry=active_response.get("telemetry") or active_response,
             verification_outcome=active_response.get("verification_outcome", "verified"),
             request_id=active_response.get("request_id"),
         )

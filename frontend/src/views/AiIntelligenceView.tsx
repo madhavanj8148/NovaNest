@@ -721,7 +721,7 @@ export const AiIntelligenceView: React.FC = () => {
                               <div className="flex items-center justify-between text-[11px] font-bold text-slate-200">
                                 <span>{cf.factor}</span>
                                 <span className="text-[10px] text-sapphire-400 bg-sapphire-500/10 px-1.5 py-0.5 rounded">
-                                  {cf.correlation}
+                                  {cf.correlation || (cf as any).correlation_strength || 'Observed'}
                                 </span>
                               </div>
                               <p className="text-[11px] text-slate-400 mt-1">{cf.evidence}</p>

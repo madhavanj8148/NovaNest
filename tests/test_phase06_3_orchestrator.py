@@ -801,6 +801,76 @@ class MasterOrchestratorPhase063Tests(unittest.TestCase):
         dist_index = PROJECT_ROOT / "frontend" / "dist" / "index.html"
         self.assertTrue(dist_index.exists(), "frontend/dist/index.html build artifact must exist")
 
+    # ------------------------------------------------------------------
+    # 16. Regression: ROOT_CAUSE "Why is delivery declining?" verification
+    # ------------------------------------------------------------------
+    def test_16_root_cause_delivery_declining_verification_and_safeguards(self) -> None:
+        orch = MasterOrchestrator(max_workers=2)
+
+        # 1. Successful verification on exact query
+        res = orch.orchestrate("Why is delivery declining?")
+        chat = res.to_chat_response()
+
+        self.assertEqual(chat["intent"], "ROOT_CAUSE")
+        self.assertEqual(chat["verification_outcome"], "verified")
+        self.assertTrue(chat["grounding_verified"])
+        self.assertEqual(chat["conflicts"], [])
+        self.assertIn("operations_agent", [a["agent_id"] for a in chat["agents_invoked"]])
+        self.assertIn("decision_agent", [a["agent_id"] for a in chat["agents_invoked"]])
+
+        rca = chat.get("root_cause_analysis")
+        self.assertIsNotNone(rca)
+        self.assertIn("Elevated Delivery Times", rca.get("investigation_target", ""))
+        self.assertGreaterEqual(len(rca.get("observed_facts", [])), 1)
+        self.assertGreaterEqual(len(rca.get("contributing_factors", [])), 1)
+
+        # Check telemetry object structure
+        self.assertIn("telemetry", chat)
+        self.assertIn("agents_invoked", chat["telemetry"])
+
+        # 2. Intentional rejection safeguard: fabricated numeric claim must fail closed
+        bad_text = (
+            "### Fabricated Hallucination\n"
+            "Delivery latency increased by exactly 987,654.32 hours due to 999,999 phantom courier strikes."
+        )
+        fake_result = AgentResult(
+            request_id="test-fake",
+            execution_id="test-fake",
+            agent_id="decision_agent",
+            domain=AgentDomain.DECISION,
+            status=AgentStatus.SUCCESS,
+            summary="Fabricated claims.",
+            narrative=bad_text,
+            facts=[],
+            metrics={},
+        )
+        bad_syn = synthesize_agent_results(
+            user_query="Why is delivery declining?",
+            agent_results=[fake_result],
+            candidate_text_override=bad_text,
+        )
+        self.assertEqual(bad_syn.verification_report.outcome, VerificationOutcome.REJECTED)
+        self.assertFalse(bad_syn.grounding_verified)
+        self.assertNotIn("987,654.32", bad_syn.consolidated_narrative)
+        self.assertIn("Verification Limitation Notice", bad_syn.consolidated_narrative)
+
+        # 3. Verify all 5 agents and DecisionAgent work together cleanly
+        plan_5 = orch.router.route(
+            "Analyze my overall business performance across all departments.",
+            "Analyze my overall business performance across all departments.",
+        )
+        self.assertIn("financial_agent", plan_5.stage1_parallel_agents)
+        self.assertIn("operations_agent", plan_5.stage1_parallel_agents)
+        self.assertIn("customer_agent", plan_5.stage1_parallel_agents)
+        self.assertIn("restaurant_agent", plan_5.stage1_parallel_agents)
+        self.assertIn("decision_agent", plan_5.stage2_sequential_agents)
+
+        res_5 = orch.orchestrate("Analyze my overall business performance across all departments.")
+        chat_5 = res_5.to_chat_response()
+        self.assertEqual(chat_5["verification_outcome"], "verified")
+        self.assertTrue(chat_5["grounding_verified"])
+        self.assertEqual(len(chat_5["conflicts"]), 0)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

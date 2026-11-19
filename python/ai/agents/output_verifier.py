@@ -444,6 +444,54 @@ class OutputVerifier:
                                 abs_tol=self._default_abs_tol,
                             )
                         )
+                    elif isinstance(cell, str) and cell:
+                        for m in _NUMBER_IN_PROSE_RE.finditer(cell):
+                            try:
+                                val = float(m.group("num").replace(",", ""))
+                                evidence.append(
+                                    _EvidenceItem(
+                                        label=f"{res.agent_id}:row[{idx}].{col}",
+                                        value=val,
+                                        rel_tol=self._default_rel_tol,
+                                        abs_tol=self._default_abs_tol,
+                                    )
+                                )
+                            except ValueError:
+                                continue
+            for rec in res.recommendations:
+                if isinstance(rec.implementation_cost, (int, float)) and not isinstance(rec.implementation_cost, bool):
+                    evidence.append(
+                        _EvidenceItem(
+                            label=f"{res.agent_id}:rec:{rec.recommendation_id}.cost",
+                            value=float(rec.implementation_cost),
+                            rel_tol=self._default_rel_tol,
+                            abs_tol=self._default_abs_tol,
+                        )
+                    )
+                if isinstance(rec.net_financial_impact, (int, float)) and not isinstance(rec.net_financial_impact, bool):
+                    evidence.append(
+                        _EvidenceItem(
+                            label=f"{res.agent_id}:rec:{rec.recommendation_id}.impact",
+                            value=float(rec.net_financial_impact),
+                            rel_tol=self._default_rel_tol,
+                            abs_tol=self._default_abs_tol,
+                        )
+                    )
+                for rec_text in (rec.evidence, rec.expected_benefit, rec.action):
+                    if rec_text:
+                        for m in _NUMBER_IN_PROSE_RE.finditer(str(rec_text)):
+                            try:
+                                val = float(m.group("num").replace(",", ""))
+                                evidence.append(
+                                    _EvidenceItem(
+                                        label=f"{res.agent_id}:rec:{rec.recommendation_id}",
+                                        value=val,
+                                        rel_tol=self._default_rel_tol,
+                                        abs_tol=self._default_abs_tol,
+                                    )
+                                )
+                            except ValueError:
+                                continue
             for caveat in res.caveats:
                 combined_caveat_text = f"{caveat.metric_summary} {caveat.warning}"
                 for m in _NUMBER_IN_PROSE_RE.finditer(combined_caveat_text):

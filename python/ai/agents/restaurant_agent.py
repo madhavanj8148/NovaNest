@@ -299,7 +299,7 @@ class RestaurantAgent(BaseDomainAgent):
             metrics["avg_restaurant_throughput_inr"] = avg_throughput
             facts.append(
                 GroundedFact(
-                    label="Average Restaurant Partner Throughput (Net Revenue / Partner)",
+                    label="Average Revenue per Registered Restaurant (Net Revenue / Partner)",
                     value=avg_throughput,
                     unit="INR",
                     kpi_id=None if city_filter else "KPI-11",
@@ -555,7 +555,7 @@ class RestaurantAgent(BaseDomainAgent):
 
         scope_label = f" in city '{city_filter}'" if city_filter else " platform-wide"
         throughput_txt = (
-            f", avg throughput ₹{metrics['avg_restaurant_throughput_inr']:,.2f}/partner"
+            f", avg revenue ₹{metrics['avg_restaurant_throughput_inr']:,.2f}/partner (registered N={total_restaurants:,})"
             if "avg_restaurant_throughput_inr" in metrics
             else ""
         )
@@ -567,7 +567,7 @@ class RestaurantAgent(BaseDomainAgent):
         )
         summary = f"Restaurant intelligence{scope_label}: {total_restaurants:,} partners{throughput_txt}{rating_txt}{risk_txt}."
         narrative_parts = [
-            "Partner risk and throughput metrics are derived directly from orders, avg_rating, and ratings_reviews tables.",
+            "Partner risk and average revenue metrics are derived directly from orders, avg_rating, and ratings_reviews tables.",
             "Phase 05 v2 monthly order prediction remains NEEDS_MORE_DATA and is not presented as production demand forecasting.",
         ]
         if data_gaps:

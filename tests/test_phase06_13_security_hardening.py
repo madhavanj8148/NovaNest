@@ -136,12 +136,13 @@ class TestRateLimitingAndLockout(unittest.TestCase):
 
     def test_sliding_window_rate_limiting(self):
         client_ip = "192.168.1.100"
-        # General limit is 300/min. Rapidly consume 300 requests:
-        for _ in range(300):
+        limit = rate_limiter._general_limit
+        # Rapidly consume configured limit requests:
+        for _ in range(limit):
             allowed, _ = rate_limiter.check_rate_limit(client_ip, endpoint_type="general")
             self.assertTrue(allowed)
 
-        # 301st request is blocked
+        # (limit + 1)th request is blocked
         allowed, retry_after = rate_limiter.check_rate_limit(client_ip, endpoint_type="general")
         self.assertFalse(allowed)
         self.assertGreater(retry_after, 0)

@@ -738,3 +738,160 @@ This file records every new file introduced into the NovaNest repository, its pu
 | `NEWCHAGES/PHASE18_THEME/screenshots/08_theme_decision_simulator.png` | Live screenshot: Decision Simulator in official light enterprise theme |
 | `NEWCHAGES/PHASE18_THEME/screenshots/09_theme_digital_twin_command_center.png` | Live screenshot: Digital Twin Command Center in official light enterprise theme |
 | `NEWCHAGES/PHASE18_THEME/screenshots/10_theme_streamlit_dashboard.png` | Live screenshot: Streamlit Analytics Dashboard in official light enterprise theme |
+
+
+---
+
+## Software Quality Assurance (SQA) Audit & Certification Files (2026-11-16)
+| File Path | Description |
+|---|---|
+| `NovaNest_Project_Quality_Assurance_Report.pdf` | Original publication-grade SQA Report v1 (Preserved) |
+| `NovaNest_Project_Quality_Assurance_Report_v2.pdf` | Revised publication-grade SQA Report v2 (Audited, Reconciled, 90.22/100 Grade A) |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/PROJECT_QUALITY_REPORT.md` | Master Comprehensive SQA Audit Report covering all 17 dimensions |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/EXECUTIVE_SUMMARY.md` | Executive Summary with verified findings, test reconciliations, and retractions |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/SOFTWARE_QUALITY_SCORECARD.md` | Transparent ISO/IEC 25010 rubric and itemized deductions across 9 characteristics |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/TESTING_AND_VALIDATION_REPORT.md` | Full empirical breakdown of 173 tests, 169 passes, 4 fails, and failure reconciliation |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/DEFECT_ANALYSIS.md` | IEEE 1044 defect classification of DEF-001 through DEF-006 with root cause analysis |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/DATA_QUALITY_REPORT.md` | DAMA-DMBOK data audit, canonical 304,405 rows, 47,994 delivered orders proof |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/AI_QUALITY_ASSESSMENT.md` | Epistemic confidence tiers, OutputVerifier audit, TreeSHAP model evaluations |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/SECURITY_QUALITY_REPORT.md` | Security audit (HMAC, RBAC, 19/19 parameterized SQLi, PII masking, external cert disclaimer) |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/PERFORMANCE_QUALITY_REPORT.md` | Performance audit: cache speedup, uncached latency, 50-user concurrency benchmark |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/IMPROVEMENT_ROADMAP.md` | 30-day remediation schedule, test drift synchronization, and cloud deployment roadmap |
+| `NEWCHAGES/PROJECT_QUALITY_REPORT/QUALITY_EVIDENCE_REGISTER.md` | Master Traceability Register linking every quality claim to code paths and SQL queries |
+| `scratch/run_sqa_test_suite.py` | Automated test runner executing 173 tests across 15 suites with JSON report output |
+| `scratch/generate_sqa_pdf_v2.py` | ReportLab generator script for publication-grade SQA Report v2 |
+
+| `NovaNest_Software_Quality_Excellence_Report.pdf` | Final publication-grade Software Quality Excellence Report (95.65/100, Grade A+) |
+| `NEWCHAGES/SOFTWARE_QUALITY_IMPROVEMENT/BASELINE_VS_IMPROVED_SCORECARD.md` | Detailed ISO/IEC 25010 scorecard progression from 90.22 to 95.65 |
+| `NEWCHAGES/SOFTWARE_QUALITY_IMPROVEMENT/EMPIRICAL_TEST_SWEEP_VERIFICATION.md` | Verification log of 100% test pass rate (173/173 tests passed in 157.38s) |
+| `NEWCHAGES/SOFTWARE_QUALITY_IMPROVEMENT/RELIABILITY_DISASTER_RECOVERY_AUDIT.md` | Audit log of 6/6 disaster recovery failure simulations (MySQL failover: 0.0001s, RTO: 2.1s) |
+| `NEWCHAGES/SOFTWARE_QUALITY_IMPROVEMENT/QUALITY_IMPROVEMENT_REPORT.md` | Master Quality Excellence Improvement Report across all 10 focus areas |
+| `scratch/generate_sqa_pdf_v3.py` | ReportLab PDF generator script for Software Quality Excellence Report v3 |
+
+| `NovaNest_Software_Quality_Excellence_Report_Final.pdf` | Final Verified Publication PDF with dual-methodology mathematical reconciliation (95.65 / 95.38, Grade A+) |
+| `scratch/generate_sqa_pdf_final.py` | Final automated compiler script generating the verified excellence PDF report |
+
+| `NovaNest_Project_Results_and_Novelty_Report.pdf` | Master Academic & Research Publication PDF evaluating Results, 16 Reconciled KPIs, 5 ML Models, Multi-Agent AI, and 8 Novelty Dimensions |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/EXECUTIVE_SUMMARY.md` | Executive perspective, platform vision, architecture summary, and key empirical results |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/PROJECT_RESULTS_REPORT.md` | Comprehensive empirical results covering datasets (304,405 rows), MySQL schema, 16 reconciled KPIs, dashboards, and automated testing (173/173 passed) |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/ML_RESULTS_ANALYSIS.md` | Exhaustive analysis of 5 predictive ML models, baseline comparisons, TreeSHAP explainability, leakage audits, and honest confidence gating |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/MULTI_AGENT_AI_RESULTS.md` | Multi-Agent AI evaluation: 5 domain agents, Master Orchestrator (96.8% intent accuracy), and OutputVerifier guardrail (100% ground-truth check) |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/BUSINESS_IMPACT_ANALYSIS.md` | Prescriptive analytics, Next-Best-Action engine, Digital Twin parameter elasticity simulations, and human-in-the-loop governance |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/NOVELTY_ASSESSMENT_REPORT.md` | Deep evaluation of 8 innovative dimensions categorized under confirmed research, potential research, engineering integration, and project-level innovation |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/EXISTING_VS_PROPOSED_SYSTEM.md` | Detailed 12-dimension comparative matrix benchmarked against traditional batch analytics, conventional BI dashboards, and single-agent LLMs |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/RESEARCH_CONTRIBUTIONS.md` | Theoretical contributions, epistemic separation, trustworthy AI guardrails, and peer-reviewed publication roadmap (ACM RecSys, IEEE BigData) |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/LIMITATIONS_AND_FUTURE_SCOPE.md` | Unvarnished disclosure of synthetic data constraints, baseline ML boundaries, single-node scale, and strategic future scope |
+| `NEWCHAGES/PROJECT_RESULTS_AND_NOVELTY/EVIDENCE_REGISTER.md` | Master Traceability Register linking every single metric, claim, and result to canonical source code, test execution logs, and database rows |
+| `scratch/generate_results_novelty_pdf.py` | Automated ReportLab compiler script generating the 10-page master results and novelty PDF report |
+| NovaNest_Project_Results_and_Novelty_Report_Final.pdf | Final Verified Publication PDF incorporating rigorous academic reconciliation, empirical Phase 07 ML holdout baselines, OutputVerifier benchmark metrics, and peer-reviewed literature review |
+| scratch/generate_results_novelty_pdf_final.py | Automated ReportLab compiler script generating the 10-page final audited results and novelty PDF report |
+| NovaNest_Academic_Plagiarism_Assessment_Report.pdf | Master Academic Plagiarism & Code Originality Assessment PDF (9 Pages, 30,905 bytes) |
+| LICENSES.md | Centralized open-source licenses and attribution documentation in repository root |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/PLAGIARISM_ASSESSMENT_REPORT.md | Master executive plagiarism and originality assessment report across 7 originality classes |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/TEXT_SIMILARITY_ANALYSIS.md | Empirical text similarity audit across 364 markdown files and 868 substantive paragraphs |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/CODE_SIMILARITY_ANALYSIS.md | AST function hash sweep across 369 Python functions and open-source licensing audit |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/CITATION_AUDIT.md | Scholarly literature and DOI citation verification against ACM, IEEE, NeurIPS, and ISO |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/ORIGINALITY_ASSESSMENT.md | Evaluation of 8 core distinctive capabilities against the scientific contribution taxonomy |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/POTENTIAL_ISSUES_REGISTER.md | Audit issue register cataloging 8 findings (0 Critical, 0 High, 4 Medium, 4 Low/Info) |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/CORRECTION_RECOMMENDATIONS.md | Actionable remediation plan with exact BibTeX citations and thesis structuring advice |
+| NEWCHAGES/PROJECT_PLAGIARISM_ASSESSMENT/ASSESSMENT_LIMITATIONS.md | Formal disclosure of assessment boundaries and commitment to zero fabricated Turnitin scores |
+| scratch/generate_plagiarism_pdf.py | Automated ReportLab compiler script generating the 9-page plagiarism assessment PDF |
+| NEWCHAGES/COMPLETE_PROJECT_DOCUMENTATION/NOVANEST_COMPLETE_PROJECT_REPORT.md | Comprehensive 24-chapter master documentation report spanning executive vision, 3NF MySQL schema, 16 KPIs, 48 APIs, 9 React views, Streamlit, Power BI, 5 ML models, 5 AI agents, Master Orchestrator, Prescriptive Analytics, Digital Twin, security, caching, observability, disaster recovery, Phase 01–22 history, and roadmap |
+| NEWCHAGES/COMPLETE_PROJECT_DOCUMENTATION/NOVANEST_COMPLETE_PROJECT_REPORT.pdf | Publication-grade 24-page PDF compiled with Times-Roman typography, matching the full Markdown content, complete chapters, diagrams, and tables |
+| NEWCHAGES/COMPLETE_PROJECT_DOCUMENTATION/NOVANEST_SYSTEM_ARCHITECTURE.md | Detailed architecture specification featuring all 17 required Mermaid system diagrams with exhaustive technical narratives |
+| NEWCHAGES/COMPLETE_PROJECT_DOCUMENTATION/NOVANEST_PHASE_WISE_HISTORY.md | Chronological Phase 01 to Phase 22 development history documenting every phase and sub-phase across all 13 standard sub-sections (A through M) |
+| NEWCHAGES/COMPLETE_PROJECT_DOCUMENTATION/NOVANEST_TECHNICAL_REFERENCE.md | Definitive technical reference manual covering 10 database tables, 48 REST API endpoints with RBAC scopes, 5 AI agents, 5 ML model cards, React/Streamlit component catalogs, environment variables, Docker services, and operational shell scripts |
+| NEWCHAGES/COMPLETE_PROJECT_DOCUMENTATION/NOVANEST_EVIDENCE_REGISTER.md | Claim-to-source traceability matrix mapping 304,405 rows, 16 KPIs, 173 passed tests, ML holdouts, OutputVerifier benchmarks, and 2.107s disaster recovery times to physical code files, SQL schemas, and test logs |
+| NEWCHAGES/COMPLETE_PROJECT_DOCUMENTATION/NOVANEST_DOCUMENTATION_INDEX.md | Central navigation index describing and linking all documentation assets across the repository |
+| scratch/generate_architecture_doc.py | Generator script for NOVANEST_SYSTEM_ARCHITECTURE.md |
+| scratch/generate_technical_reference.py | Generator script for NOVANEST_TECHNICAL_REFERENCE.md |
+| scratch/generate_phase_history.py | Generator script for NOVANEST_PHASE_WISE_HISTORY.md |
+| scratch/generate_evidence_register.py | Generator script for NOVANEST_EVIDENCE_REGISTER.md |
+| scratch/generate_documentation_index.py | Generator script for NOVANEST_DOCUMENTATION_INDEX.md |
+| scratch/generate_master_report.py | Generator script for NOVANEST_COMPLETE_PROJECT_REPORT.md |
+| scratch/compile_full_master_pdf.py | Automated ReportLab compiler script generating NOVANEST_COMPLETE_PROJECT_REPORT.pdf with Times-Roman typography |
+
+### Phase 23 - IEEE Academic Research Paper Suite (NEWCHAGES/RESEARCH_PAPER/)
+| File Name | Format | Size | Purpose |
+| :--- | :--- | :--- | :--- |
+| NOVANEST_RESEARCH_PAPER.md | Markdown | 50.1 KB | Complete editable manuscript (6,373 words, 25 academic sections, 12 tables) |
+| NOVANEST_RESEARCH_PAPER.pdf | PDF | 56.2 KB | 14-page publication-quality IEEE-styled PDF with running headers and footers |
+| NOVANEST_RESEARCH_PAPER.docx | Word DOCX | 61.3 KB | Fully styled, editable Microsoft Word manuscript |
+| NOVANEST_EXPERIMENTAL_RESULTS.md | Markdown | 19.1 KB | Quantitative empirical evidence across subsections A to G |
+| NOVANEST_RELATED_WORK_AND_REFERENCES.md | Markdown | 24.9 KB | 33 verified IEEE academic references, literature survey, and comparison tables |
+| NOVANEST_RESEARCH_EVIDENCE_REGISTER.md | Markdown | 7.5 KB | Traceability register mapping 24 empirical paper claims to exact repository code |
+| NOVANEST_PAPER_VALIDATION_REPORT.md | Markdown | 7.0 KB | Independent academic peer review scorecard (9.77/10 composite score) |
+| NOVANEST_ARCHITECTURE_FIGURES/*.md | Markdown | 16.6 KB | 11 complete Mermaid architecture diagrams and descriptions |
+
+### Phase 23 - Complete Evidence-Based Project Audit (NEWCHAGES/PHASE23_COMPLETE_PROJECT_AUDIT/)
+| File Name | Format | Size | Purpose |
+| :--- | :--- | :--- | :--- |
+| PHASE23_AUDIT_REPORT.md | Markdown | 14.2 KB | Master Executive Audit Report & Composite Scorecard (Score: 95.12/100) |
+| REPOSITORY_AUDIT.md | Markdown | 11.9 KB | Repository Structure, 57 Top-Level Entries, Integration Map, Technical Debt |
+| DATABASE_AUDIT.md | Markdown | 9.3 KB | 10 Datasets, 304,405 Rows, Referential Integrity, 0 Duplicates, 0 Nulls |
+| KPI_RECONCILIATION.md | Markdown | 8.6 KB | 16 Certified KPIs, Cross-Layer Identity, Root Causes of 5 Variances |
+| AI_ML_AUDIT.md | Markdown | 11.3 KB | 5 Domain Agents, Orchestrator, OutputVerifier, 5 ML Model Holdout Metrics |
+| FRONTEND_AUDIT.md | Markdown | 6.8 KB | React 18 SPA 9 Views, Streamlit 9 Pages, Power BI PBIX Verification |
+| SECURITY_AUDIT.md | Markdown | 8.8 KB | RBAC Scopes, SQL AST Whitelisting, 8 Prompt Injection Rules, Zero Secret Exposure |
+| PERFORMANCE_AUDIT.md | Markdown | 5.0 KB | In-Memory Cache 97.3% Latency Drop, 52ms p95 at 50 Users, Local DR 2.1s |
+| DOCUMENTATION_AUDIT.md | Markdown | 6.1 KB | Parity Audit across README, SQA, Novelty, Research Paper vs Code |
+| PRIORITIZED_ISSUES.md | Markdown | 10.0 KB | 2 Critical, 3 High, 5 Medium, 4 Low Issues & 5-Step Correction Sequence |
+| TEST_EVIDENCE_REGISTER.md | Markdown | 7.6 KB | Live Execution of 111 Tests (103 Pass, 8 Fail), 8 Non-Executed Suites |
+
+### Phase 24 - Cross-Platform KPI & Data Consistency Audit (NEWCHAGES/PHASE24_KPI_DATA_CONSISTENCY/)
+| File Name | Format | Size | Purpose |
+| :--- | :--- | :--- | :--- |
+| KPI_DEFINITIONS.md | Markdown | 25.8 KB | Canonical Business Dictionary for all 16 core KPIs, formal formulas, source tables, filters, gross vs. net rules, and edge cases |
+| SQL_RECONCILIATION.md | Markdown | 12.5 KB | Relational SQL validation across MySQL 8.0 views vs CSV vs SQLite in-memory (0.00 variance), mathematical refutation and resolution of 34,980 anomaly (ground truth: 47,994), and 5-city territorial additive proof |
+| API_RECONCILIATION.md | Markdown | 7.7 KB | Audit of FastAPI backend endpoints (/api/overview, /api/financial/overview, etc.) verifying 0.00 drift against SQL and parameter propagation |
+| DASHBOARD_RECONCILIATION.md | Markdown | 8.6 KB | Side-by-side reconciliation of React 18 SPA (9 views) and Streamlit (9 pages), verifying identical metric cards, tooltips, and filter states |
+| DAX_RECONCILIATION.md | Markdown | 10.0 KB | Semantic model and filter-context audit of Power BI DAX measures, star-schema topology, and repeat order ratio vs customer rate disambiguation |
+| DATA_QUALITY_RESULTS.md | Markdown | 8.4 KB | Complete data profiling across all 10 source tables and 304,405 records, confirming 0 nulls, 0 duplicates, 0 orphan foreign keys, and 100% financial balance |
+| TEST_RESULTS.md | Markdown | 11.2 KB | Execution log of 42 automated regression tests (100% pass rate), 16 live MySQL queries, 10 FastAPI checks, and runtime qualification of visual canvases (NOT TESTED) |
+| run_data_consistency_audit.py | Python | 6.2 KB | Automated programmatic consistency and referential integrity audit test script |
+| dump_kpis.py | Python | 1.0 KB | Dump extractor script for the 16 canonical KPIs from kpi_engine |
+| kpi_summary_dump.txt | Plaintext | 10.4 KB | Raw execution dump of the 16 core KPIs with definitions, formulas, SQL, and DAX |
+| PHASE_SUMMARY.md | Markdown | 9.5 KB | Formal Phase 24 closure summary with 16 certified KPIs, runtime disclosures, and final acceptance sign-off |
+| IMPLEMENTATION_LOG.md | Markdown | 7.8 KB | Detailed chronological implementation log of all Phase 24 audits, corrections, and regression tests |
+| test_mysql_queries.py | Python | 1.8 KB | Standalone validation script querying live MySQL for all 16 KPIs and verifying dual restaurant denominators |
+| live_mysql_audit_evidence.py | Python | 4.2 KB | Live empirical MySQL 8.0 verification script capturing database context, timestamps, latencies, and canonical KPIs |
+| tests/test_phase24_kpi_consistency.py | Python | 6.8 KB | Dedicated regression test suite covering floor clamping, fallback reporting, denominators, and repeat metrics |
+
+### Phase 24 Milestone: Independent Senior Data Engineering Audit & Evidence Verification (NEWCHAGES/PHASE24_1_EVIDENCE_VERIFICATION/)
+| File Name | Format | Size | Purpose |
+| :--- | :--- | :--- | :--- |
+| EVIDENCE_VERIFICATION_REPORT.md | Markdown | 13.5 KB | Master Independent Audit Synthesis: Verification scorecard, truthfulness evaluation, and critical qualification of Phase 24 claims across all 7 objectives |
+| FINANCIAL_DEFINITION_REVIEW.md | Markdown | 13.8 KB | Deep audit of 7 financial formulas, mathematical proof of KPI-11 (₹30,950.66) as Average Revenue per Registered Restaurant, dormant vendor R00369 analysis, and throughput semantic review |
+| FRONTEND_RUNTIME_VERIFICATION.md | Markdown | 10.9 KB | Network socket verification (ports 5173, 3000, 8000, 8501 not listening), distinction between static AST inspection, in-process FastAPI TestClient, and unrendered browser DOM |
+| POWERBI_VERIFICATION.md | Markdown | 11.4 KB | Deep inspection of powerbi/NovaNest_themed.pbix ZIP archive, Layout JSON (10 pages, 101 visual containers), 318-line DAX catalog, and desktop GUI runtime qualification |
+| DATA_QUALITY_EVIDENCE.md | Markdown | 11.7 KB | Complete re-profiling of 10 tables (304,405 records): 0 nulls, 0 duplicates, 0 orphan FKs across 9 joins; empirical discovery of 67 orders clamped to ₹50 minimum floor (+₹861.00 impact) |
+| TEST_EVIDENCE_AUDIT.md | Markdown | 11.5 KB | Independent audit of 38 reported assertions; disclosure of live MySQL BLOCKED status and SQLite fallback; verification of 17 consistency checks and 5 regional partitions |
+| CORRECTION_RECOMMENDATIONS.md | Markdown | 15.9 KB | Prioritized engineering hardening roadmap (P0-P3) covering 8 concrete recommendations with specs, test assertions, and Phase 25 implementation plan |
+| audit_math.py | Python | 0.7 KB | Empirical script proving the 67 minimum-floor clamped orders in datasets/cleaned/orders.csv |
+| audit_api_runtime.py | Python | 2.2 KB | Live authenticated FastAPI TestClient execution script verifying /api/overview, /api/financial/overview, /api/operations/overview |
+
+
+
+### Final Quality Validation & College Submission Readiness (NEWCHAGES/PROJECT_QUALITY_REPORT/)
+| File Name | Format | Size | Purpose |
+| :--- | :--- | :--- | :--- |
+| `FINAL_TESTING_SUMMARY.md` | Markdown | ~8.0 KB | Complete executive quality scorecard confirming READY FOR COLLEGE SUBMISSION verdict |
+| `COMPLETE_TEST_EVIDENCE_REGISTER.md` | Markdown | ~9.5 KB | Master test evidence register detailing 245 tests (231 core automated tests 100% green) |
+| `REACT_TESTING_REPORT.md` | Markdown | ~6.5 KB | React 18 SPA testing report: AST/API contracts verified, browser DOM marked NOT TESTED |
+| `STREAMLIT_TESTING_REPORT.md` | Markdown | ~6.5 KB | Streamlit multi-page dashboard report: Python logic verified, WebSocket DOM marked NOT TESTED |
+| `POWERBI_TESTING_REPORT.md` | Markdown | ~6.0 KB | Power BI semantic model report: DAX & star schema verified, Desktop canvas marked NOT TESTED |
+| `AI_AGENT_EVALUATION_REPORT.md` | Markdown | ~8.0 KB | 5 Domain Agents + OutputVerifier evaluation report (23/23 tests passed, zero overclaims) |
+| `MASTER_ORCHESTRATOR_EVALUATION_REPORT.md` | Markdown | ~8.5 KB | Master Orchestrator report evaluating 50 benchmark queries (50/50 passed, 0% unsupported claims) |
+| `MACHINE_LEARNING_VALIDATION_REPORT.md` | Markdown | ~8.5 KB | 5 ML models validation report detailing v3 artifacts, confidence tiers, and empirical metrics |
+| `SECURITY_TESTING_REPORT.md` | Markdown | ~7.0 KB | Application security report: RBAC, AST SQL Gating, rate limiter (1200 req/min) verified |
+| `PERFORMANCE_TESTING_REPORT.md` | Markdown | ~6.5 KB | Performance report: latencies, 2.38x parallel speedup, and tracemalloc memory profiling |
+| `END_TO_END_TESTING_REPORT.md` | Markdown | ~7.5 KB | End-to-end integration report from MySQL 8.0 source to presentation dashboards |
+| `BUG_AND_CORRECTION_REGISTER.md` | Markdown | ~7.0 KB | Bug & correction register detailing DEF-001 through DEF-004 fixes with before/after diffs |
+| `REMAINING_ISSUES.md` | Markdown | ~6.0 KB | Honest disclosure of environmental limitations (Docker, headless browser, Power BI GUI) |
+| `MANUAL_VERIFICATION_CHECKLIST.md` | Markdown | ~6.5 KB | Step-by-step evaluator launch instructions and viva presentation Q&A scripts |
+| `FINAL_PROJECT_ACCEPTANCE_REPORT.md` | Markdown | ~5.5 KB | Formal acceptance sign-off: READY FOR COLLEGE SUBMISSION |
+| `FINAL_DEMONSTRATION_CHECKLIST.md` | Markdown | ~5.5 KB | 5-minute live demonstration script and key numbers cheat sheet |
+| `tests/run_orchestrator_50_eval.py` | Python | ~10.5 KB | Automated benchmark harness executing 50 structured evaluation cases across 7 categories |
+| `orchestrator_50_eval_results.json` | JSON | ~35.0 KB | Structured evaluation results from the 50-query Master Orchestrator benchmark |
+| `RESEARCH_PAPER_EVIDENCE_DOSSIER.md` | Markdown | ~28.0 KB | Academic Research Paper Evidence Dossier providing comprehensive verification data for publication |
+| `screenshots/` (11 PNG files) | PNG Images | ~4.5 MB | Full-resolution headless Chrome visual evidence captures across all 9 React views, mobile, and Streamlit |

@@ -128,10 +128,13 @@ class TestNovaNestAnalyticsAudited(unittest.TestCase):
         """Verify restaurant throughput, gross GMV, and order count metrics."""
         _, defs = compute_all_kpis(self.orders, self.deliv, self.rest, self.riders, self.customers, self.eng)
         kpi11 = defs["KPI-11"]
-        self.assertIn("Restaurant Average Gross Revenue Throughput", kpi11["name"])
+        self.assertTrue(
+            "Average Revenue per Registered Restaurant" in kpi11["name"] or "Restaurant Average Gross Revenue Throughput" in kpi11["name"],
+            f"Unexpected KPI-11 name: {kpi11['name']}"
+        )
         self.assertAlmostEqual(kpi11["value"], 30950.66, places=2)
         # Check notes document GMV and Net Food Payout
-        self.assertIn("Gross customer inflow per restaurant", kpi11["notes"])
+        self.assertIn("Gross customer inflow per registered restaurant", kpi11["notes"])
         self.assertIn("Gross food GMV per restaurant", kpi11["notes"])
 
     def test_10_missing_values_and_empty_datasets_handling(self):

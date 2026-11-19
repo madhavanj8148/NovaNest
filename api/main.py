@@ -3232,7 +3232,7 @@ def get_paginated_records(
     page: int = Query(1, ge=1),
     page_size: int = Query(25, ge=1, le=100),
     sort_by: Optional[str] = Query(None),
-    sort_dir: str = Query("asc", regex="^(asc|desc)$"),
+    sort_dir: str = Query("asc", pattern="^(asc|desc)$"),
     search: Optional[str] = Query(None),
     city: Optional[str] = Query(None),
     status: Optional[str] = Query(None),
@@ -3292,9 +3292,6 @@ def clear_cache_endpoint():
     """Flushes L1 and L2 performance caches."""
     GLOBAL_CACHE.clear()
     return {"status": "success", "message": "Performance caches successfully flushed."}
-
-
-
 
 
 

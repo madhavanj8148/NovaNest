@@ -62,6 +62,8 @@ bin/
 *.sql
 *.sql.enc
 *.sig
+!mysql/*.sql
+!docker/mysql/init/*.sql
 
 # Frontend artifacts
 frontend/dist/

@@ -127,7 +127,7 @@ def make_model_caveat_from_registry(model_name: str, domain: str) -> ModelCaveat
         validation_status=f"PHASE_07_{tier}",
         metric_summary=metric_str,
         warning=caveat[:490],
-        is_production_ready=(tier in ("HIGH", "OPERATIONAL_GATED")),
+        is_production_ready=(tier == "HIGH"),
     )
 
 

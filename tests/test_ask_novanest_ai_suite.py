@@ -48,7 +48,13 @@ class TestAskNovaNestAISuite(unittest.TestCase):
     def setUpClass(cls):
         cls.data, cls.source_name = load_data()
         cls.api_base = "http://127.0.0.1:8000"
-        cls.http = requests.Session()
+        try:
+            r = requests.get(f"{cls.api_base}/api/health", timeout=0.3)
+            cls.http = requests.Session()
+        except Exception:
+            from fastapi.testclient import TestClient
+            import api.main
+            cls.http = TestClient(api.main.app)
         api_key = os.getenv("NOVANEST_API_KEY") or os.getenv("NOVANEST_ADMIN_KEY") or ""
         admin_key = os.getenv("NOVANEST_ADMIN_KEY") or api_key
         cls.admin_headers = {"X-API-Key": admin_key} if admin_key else {}

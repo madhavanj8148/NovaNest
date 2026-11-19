@@ -445,7 +445,8 @@ class OutputVerifier:
                             )
                         )
             for caveat in res.caveats:
-                for m in _NUMBER_IN_PROSE_RE.finditer(caveat.metric_summary):
+                combined_caveat_text = f"{caveat.metric_summary} {caveat.warning}"
+                for m in _NUMBER_IN_PROSE_RE.finditer(combined_caveat_text):
                     try:
                         val = float(m.group("num").replace(",", ""))
                         evidence.append(

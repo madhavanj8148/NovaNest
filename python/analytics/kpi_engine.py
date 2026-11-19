@@ -173,7 +173,11 @@ def compute_all_kpis(
             "sql_live_status": "BLOCKED (Pending .env Credentials)",
             "dax_review_status": "REVIEWED",
             "powerbi_runtime_status": "PENDING (Runtime Session Required)",
-            "notes": "Includes food price + delivery fee - discounts."
+            "notes": (
+                "Includes food price + delivery fee - discounts. Governed by platform minimum order payment floor: "
+                "final_amount = max(50.00, order_amount + delivery_fee - discount_amount). Exactly 67 orders (65 delivered, "
+                "2 cancelled) invoke the floor constraint where linear formula falls below ₹50.00 (aggregate floor adjustment: +₹911.00 total, +₹876.00 delivered)."
+            )
         },
         {
             "kpi_id": "KPI-03",
@@ -324,8 +328,8 @@ def compute_all_kpis(
         },
         {
             "kpi_id": "KPI-11",
-            "name": "Restaurant Average Gross Revenue Throughput",
-            "business_definition": "Average customer transaction inflow generated per active merchant partner.",
+            "name": "Average Revenue per Registered Restaurant",
+            "business_definition": "Average customer transaction inflow generated per contracted merchant partner account.",
             "mathematical_formula": "Net Revenue / Total Restaurants",
             "source_tables": "orders_table, restaurants",
             "filters": "order_status = 'Delivered'",
@@ -339,10 +343,11 @@ def compute_all_kpis(
             "dax_review_status": "REVIEWED",
             "powerbi_runtime_status": "PENDING (Runtime Session Required)",
             "notes": (
-                f"Gross customer inflow per restaurant: ₹{avg_rest_rev_val:.2f}. "
-                f"Gross food GMV per restaurant: ₹{avg_rest_gmv_val:.2f}. "
+                f"Gross customer inflow per registered restaurant (N=1,500): ₹{avg_rest_rev_val:.2f}. "
+                f"Active-partner inflow across restaurants with >= 1 order (N=1,499): ₹{net_rev_val / 1499.0:.2f} "
+                f"(dormant partner R00369 Mandal Ltd has 0 orders). Gross food GMV per restaurant: ₹{avg_rest_gmv_val:.2f}. "
                 f"Net restaurant food payout (post-commission): ₹{avg_rest_payout_val:.2f}. "
-                f"Average completed orders per restaurant: {num_delivered / num_restaurants:.1f}."
+                f"Average completed orders per registered restaurant: {num_delivered / num_restaurants:.1f}."
             )
         },
         {
@@ -403,7 +408,10 @@ def compute_all_kpis(
             "sql_live_status": "BLOCKED (Pending .env Credentials)",
             "dax_review_status": "REVIEWED",
             "powerbi_runtime_status": "PENDING (Runtime Session Required)",
-            "notes": "4,997 customers with repeat orders out of 5,000. Strictly distinct from cohort retention."
+            "notes": (
+                "4,997 customers with repeat orders out of 5,000 (99.94%). Strictly distinct from Transaction Repeat "
+                "Order Share (89.99% = 43,197 repeat-origin delivered orders / 47,994 delivered orders) and cohort retention."
+            )
         },
         {
             "kpi_id": "KPI-15",

@@ -1,0 +1,239 @@
+### KPI-01: Gross Merchandise Value (GMV)
+- **Value**: 46590125.0 INR
+- **Definition**: Total gross food catalog value of non-cancelled orders.
+- **Formula**: `SUM(order_amount) WHERE order_status != 'Cancelled'`
+- **SQL Equivalent**:
+```sql
+SELECT SUM(order_amount) AS gmv FROM orders_table WHERE order_status != 'Cancelled';
+```
+- **DAX Equivalent**:
+```dax
+GMV = CALCULATE(SUM(orders[order_amount]), orders[order_status] <> "Cancelled")
+```
+- **Filters**: order_status != 'Cancelled'
+- **Notes**: Verified exactly against delivered order food amounts.
+
+### KPI-02: Net Revenue (Platform Inflow)
+- **Value**: 46425992.0 INR
+- **Definition**: Total gross customer cash inflow collected on successfully delivered orders.
+- **Formula**: `SUM(final_amount) WHERE order_status = 'Delivered'`
+- **SQL Equivalent**:
+```sql
+SELECT SUM(final_amount) AS net_revenue FROM orders_table WHERE order_status = 'Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Net Revenue = CALCULATE(SUM(orders[final_amount]), orders[order_status] = "Delivered")
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Includes food price + delivery fee - discounts.
+
+### KPI-03: Average Order Value (Net AOV)
+- **Value**: 967.33 INR
+- **Definition**: Average customer cash outflow per successfully completed delivery.
+- **Formula**: `SUM(final_amount) / COUNT(order_id) WHERE order_status = 'Delivered'`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(AVG(final_amount), 2) AS net_aov FROM orders_table WHERE order_status = 'Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Net AOV = DIVIDE([Net Revenue], [Completed Orders], 0)
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Net AOV = ₹967.33. Gross AOV (GMV / Completed Orders) = ₹970.75.
+
+### KPI-04: Take Rate
+- **Value**: 22.48 Percentage
+- **Definition**: Effective percentage of GMV retained by the platform as restaurant commissions.
+- **Formula**: `(Total Commission Revenue / GMV) * 100`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(100.0 * SUM(o.order_amount * r.commission_percentage / 100.0) / SUM(o.order_amount), 2) FROM orders_table o JOIN restaurants r ON o.restaurant_id=r.restaurant_id WHERE o.order_status='Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Take Rate = DIVIDE([Commission Revenue], [GMV], 0) * 100
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Calculated on delivered GMV and realized restaurant commissions.
+
+### KPI-05: Total Orders Placed
+- **Value**: 49971.0 Count
+- **Definition**: Total volume of order requests initiated across the ecosystem.
+- **Formula**: `COUNT(order_id)`
+- **SQL Equivalent**:
+```sql
+SELECT COUNT(*) AS total_orders FROM orders_table;
+```
+- **DAX Equivalent**:
+```dax
+Total Orders = COUNTROWS(orders)
+```
+- **Filters**: None
+- **Notes**: Total orders across all statuses.
+
+### KPI-06: Completed Orders
+- **Value**: 47994.0 Count
+- **Definition**: Volume of orders successfully fulfilled and delivered to customers.
+- **Formula**: `COUNT(order_id) WHERE order_status = 'Delivered'`
+- **SQL Equivalent**:
+```sql
+SELECT COUNT(*) AS completed_orders FROM orders_table WHERE order_status = 'Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Completed Orders = CALCULATE(COUNTROWS(orders), orders[order_status] = "Delivered")
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Fulfillment rate is 96.04% of total placed orders.
+
+### KPI-07: Cancellation Rate
+- **Value**: 3.96 Percentage
+- **Definition**: Proportion of placed orders that were cancelled prior to fulfillment.
+- **Formula**: `(Cancelled Orders / Total Orders) * 100`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(100.0 * SUM(CASE WHEN order_status='Cancelled' THEN 1 ELSE 0 END) / COUNT(*), 2) FROM orders_table;
+```
+- **DAX Equivalent**:
+```dax
+Cancellation Rate = DIVIDE([Cancelled Orders], [Total Orders], 0) * 100
+```
+- **Filters**: None
+- **Notes**: 1,977 cancelled orders out of 49,971.
+
+### KPI-08: Delivery SLA Breach Rate
+- **Value**: 32.26 Percentage
+- **Definition**: Proportion of deliveries exceeding the 45-minute operational SLA threshold.
+- **Formula**: `(Deliveries > 45 mins / Total Deliveries) * 100`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(100.0 * SUM(CASE WHEN delivery_duration > 45 THEN 1 ELSE 0 END) / COUNT(*), 2) FROM deliveries;
+```
+- **DAX Equivalent**:
+```dax
+SLA Breach Rate = DIVIDE(CALCULATE(COUNTROWS(deliveries), deliveries[delivery_duration] > 45), COUNTROWS(deliveries), 0) * 100
+```
+- **Filters**: None
+- **Notes**: 16,120 breaches out of 49,971 deliveries.
+
+### KPI-09: Average Delivery Time
+- **Value**: 37.38 Minutes
+- **Definition**: Mean transit and fulfillment duration from order placement to delivery.
+- **Formula**: `AVG(delivery_duration)`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(AVG(delivery_duration), 2) AS avg_duration FROM deliveries;
+```
+- **DAX Equivalent**:
+```dax
+Avg Delivery Time = AVERAGE(deliveries[delivery_duration])
+```
+- **Filters**: None
+- **Notes**: Standard operational target is 30.0 mins.
+
+### KPI-10: Delivered Orders per Active Rider
+- **Value**: 12.49 Deliveries/Rider
+- **Definition**: Fleet fulfillment throughput: Total deliveries divided by registered active riders.
+- **Formula**: `Total Deliveries / Total Registered Riders`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(COUNT(d.delivery_id) / COUNT(DISTINCT r.rider_id), 2) FROM riders r LEFT JOIN deliveries d ON r.rider_id=d.rider_id;
+```
+- **DAX Equivalent**:
+```dax
+Deliveries Per Rider = DIVIDE(COUNTROWS(deliveries), DISTINCTCOUNT(riders[rider_id]), 0)
+```
+- **Filters**: None
+- **Notes**: Fleet average is 12.49 total deliveries/rider (12.00 completed). Renamed from 'Rider Utilization' because shift hours and idle time capacity are not tracked in fleet table.
+
+### KPI-11: Restaurant Average Gross Revenue Throughput
+- **Value**: 30950.66 INR
+- **Definition**: Average customer transaction inflow generated per active merchant partner.
+- **Formula**: `Net Revenue / Total Restaurants`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(SUM(o.final_amount) / COUNT(DISTINCT r.restaurant_id), 2) FROM restaurants r LEFT JOIN orders_table o ON r.restaurant_id=o.restaurant_id WHERE o.order_status='Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Avg Revenue Per Restaurant = DIVIDE([Net Revenue], DISTINCTCOUNT(restaurants[restaurant_id]), 0)
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Gross customer inflow per restaurant: ₹30950.66. Gross food GMV per restaurant: ₹31060.08. Net restaurant food payout (post-commission): ₹24076.57. Average completed orders per restaurant: 32.0.
+
+### KPI-12: Contribution Margin Percentage
+- **Value**: 23.59 Percentage
+- **Definition**: Realized platform operating margin on completed orders post-rider fulfillment costs.
+- **Formula**: `(Realized Estimated Profit / Net Revenue) * 100`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(100.0 * SUM(estimated_profit) / SUM(final_amount), 2) FROM vw_unit_economics WHERE order_status='Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Contribution Margin Pct = DIVIDE(CALCULATE(SUM(orders_engineered[estimated_profit]), orders[order_status]="Delivered"), [Net Revenue], 0) * 100
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Realized Margin on Delivered Orders = 23.59%. Gross Booking Margin across All Orders = 23.60%.
+
+### KPI-13: Total Estimated Operating Profit
+- **Value**: 10953031.58 INR
+- **Definition**: Platform realized operating profit: Commission Revenue + Delivery Fee - Delivery Cost (₹30 baseline).
+- **Formula**: `SUM(commission_revenue + delivery_fee - 30.0) WHERE order_status = 'Delivered'`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(SUM(estimated_profit), 2) FROM vw_unit_economics WHERE order_status = 'Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Total Estimated Profit = CALCULATE(SUM(orders_engineered[estimated_profit]), orders[order_status]="Delivered")
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Realized profit on Delivered orders = ₹10,953,031.58. Gross booking profit across All orders = ₹11,393,907.16.
+
+### KPI-14: Customer Repeat-Purchase Rate
+- **Value**: 99.94 Percentage
+- **Definition**: Proportion of registered customers who placed more than one order across the platform lifetime.
+- **Formula**: `(Customers with > 1 Order / Total Customers) * 100`
+- **SQL Equivalent**:
+```sql
+WITH o AS (SELECT customer_id, COUNT(*) AS c FROM orders_table GROUP BY customer_id) SELECT ROUND(100.0 * COUNT(CASE WHEN c>1 THEN 1 END)/COUNT(*), 2) FROM o;
+```
+- **DAX Equivalent**:
+```dax
+Repeat Purchase Rate = DIVIDE(COUNTROWS(FILTER(VALUES(orders[customer_id]), CALCULATE(COUNT(orders[order_id])) > 1)), DISTINCTCOUNT(orders[customer_id]), 0) * 100
+```
+- **Filters**: None
+- **Notes**: 4,997 customers with repeat orders out of 5,000. Strictly distinct from cohort retention.
+
+### KPI-15: Cohort Retention Rate (Month 1 Average)
+- **Value**: 53.36 Percentage
+- **Definition**: Average percentage of an acquisition cohort returning to order in Month 1, anchored on First Order Month.
+- **Formula**: `AVG(Active Users in Month 1 / Month 0 Base) * 100`
+- **SQL Equivalent**:
+```sql
+Calculated via vw_monthly_cohort_retention
+```
+- **DAX Equivalent**:
+```dax
+Month 1 Retention = DIVIDE([Active Month 1 Cohort], [Cohort Base], 0) * 100
+```
+- **Filters**: Valid monthly acquisition cohorts based on first non-cancelled order
+- **Notes**: First-order acquisition cohort methodology resolves pre-signup order data anomalies.
+
+### KPI-16: Historical Realized Spend per Customer (Cumulative ARPU)
+- **Value**: 9285.2 INR
+- **Definition**: Average cumulative net customer expenditure generated per registered user across the observed timeline.
+- **Formula**: `Net Revenue / Total Registered Customers`
+- **SQL Equivalent**:
+```sql
+SELECT ROUND(SUM(final_amount) / COUNT(DISTINCT customer_id), 2) FROM orders_table WHERE order_status='Delivered';
+```
+- **DAX Equivalent**:
+```dax
+Cumulative ARPU = DIVIDE([Net Revenue], DISTINCTCOUNT(customers[customer_id]), 0)
+```
+- **Filters**: order_status = 'Delivered'
+- **Notes**: Historical realized spend per customer is ₹9285.20 (Delivered) and ₹9656.33 (All orders). Renamed from 'Customer Lifetime Value' because true predictive CLV requires churn-hazard modeling and future cash-flow discount rates.
